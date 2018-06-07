@@ -1,3 +1,33 @@
 body {
     background-color: navy;   
 }
+
+p {
+    color: white;
+}
+
+#title-card {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10;
+    padding-top: 20;
+    width: 600;
+    height: 160;
+    background-color: lightblue;
+}
+
+#question-1 {
+    margin-top: 30;
+    text-align: center;
+}
+
+#question-2 {
+    margin-top: 30;
+    text-align: center;
+}
+
+#question-3 {
+    margin-top: 30;
+    text-align: center;
+}
