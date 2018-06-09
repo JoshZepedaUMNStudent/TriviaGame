@@ -1,51 +1,81 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
 window.onload = function() {
     $("#reset").on("click", timer.reset);
     $("#starter").on("click", timer.start);
-}
+};
     
 // Global Variables  
-var q1answers = ["Tonga", "Marianna", "Philippine"];
+var q1Answers = ["Tonga", "Marianna", "Philippine"];
 var q2Answers = ["70%", "85%", "65%"];
 var q3Answers = ["Mid-Atlantic Ridge", "Pacific Ridge", "Nazca Ridge"];
-var playerAnswer = 0;
+var playerAnswer = "";
+var playerAnswerQ1 = "";
+var playerAnswerQ2 = "";
 
-var intervalId;
-var clockRunning = false;
+
+var time = 0;
+
 
 // Timer
-start: function() {
-    if (!clockRunning) {
-        intervalId = setInterval(____, 1000);
-        clockRunning = true;
-    }
+function reset() {
+    time = 0;
+
+    $("#timer").text("00:00");
 }
+
+function start() {
+    intervalId = setInterval(count, 1000);
+}
+
+function count() {
+    time++;
+    var converted = timeConverter(time);
+    $("#display").text(converted);
+}
+
+function timeConverter(t) {
+    var minutes = Math.floor(t / 60);
+    var seconds = t - (minutes * 60);
+
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+
+    if (minutes === 0) {
+        minutes = "00";
+ }
+
+ return minutes + ":" + seconds;
+ }
 
 // Functions for Question #1
 $("#selectTonga").click(function() {
-    $('input: radio[name=trench')[0].checked = false;
+    playerAnswerQ1 = $(this).val();
+    console.log(playerAnswer);
+    checkAnswer(playerAnswerQ1, q1Answers);
+    // $('input: radio[name=trench')[0].checked = false;
 });
 
+// *** CONTINUE LESSON HERE! ***
 $("selectMarianna").click(function() {
-    $('input: radio[name=trench')[1].checked = true;
+    playerAnswerQ1 = $(this).val();
+    checkAnswer(playerAnswerQ1, q1Answers); 
+    $('input: radio[name=trench')[1].checked = true; 
 });
 
 $("selectPhilippine").click(function() {
     $('input: radio[name=trench')[2].checked = false;
 });
 
-for (var i = 0; i < q1Answers.length; i++) {
-    if (playerAnswer === q1Answers[0]) {
-        alert("Wrong!");
-    } 
-    if (playerAnswer === q1Answers[1]) {
-        alert("Right!");
+    function checkAnswer(playerAnswer, answerArray, correctIndex) {
+            if (playerAnswer === answerArray[correctIndex]) {
+                alert("Right!");
+            
+            } else {
+                alert("Wrong!");
+            }
     }
-    if (playerAnswer === q1Answers[2]) {
-        alert("Wrong!");
-    }
-}
 
 // Functions for Question #2
 $("select70").click(function() {
@@ -75,17 +105,7 @@ $("selectNazca").click(function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-});
+// });
 
 
 
