@@ -1,8 +1,12 @@
 body {
-    background-color: navy;   
+    background-image: url("../images/ocean.jpeg")
 }
 
 p {
+    color: white;
+}
+
+.span {
     color: white;
 }
 
