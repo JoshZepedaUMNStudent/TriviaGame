@@ -65,7 +65,8 @@ $("selectMarianna").click(function() {
 });
 
 $("selectPhilippine").click(function() {
-    $('input: radio[name=trench')[2].checked = false;
+    playerAnswerQ1 = $(this).val();
+    checkAnswer(playerAnswerQ1, q1Answers);
 });
 
     function checkAnswer(playerAnswer, answerArray, correctIndex) {
