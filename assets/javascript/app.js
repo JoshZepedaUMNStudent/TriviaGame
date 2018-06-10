@@ -31,7 +31,7 @@ function start() {
 function count() {
     time++;
     var converted = timeConverter(time);
-    $("#display").text(converted);
+    $("#timer").text(converted);
 }
 
 function timeConverter(t) {
@@ -48,61 +48,75 @@ function timeConverter(t) {
 
  return minutes + ":" + seconds;
  }
+start();
+
+// Function to check Player's Answers
+function checkAnswer(playerAnswer, answerArray, correctIndex) {
+    console.log(answerArray[correctIndex])
+    if (playerAnswer === answerArray[correctIndex]) {
+        alert("Right!");
+    
+    } else {
+        alert("Wrong!");
+    }
+}
 
 // Functions for Question #1
 $("#selectTonga").click(function() {
     playerAnswerQ1 = $(this).val();
     console.log(playerAnswer);
     checkAnswer(playerAnswerQ1, q1Answers);
-    // $('input: radio[name=trench')[0].checked = false;
 });
 
-// *** CONTINUE LESSON HERE! ***
-$("selectMarianna").click(function() {
+$("#selectMarianna").click(function() {
     playerAnswerQ1 = $(this).val();
-    checkAnswer(playerAnswerQ1, q1Answers); 
+    checkAnswer(playerAnswerQ1, q1Answers, 1); 
     $('input: radio[name=trench')[1].checked = true; 
 });
 
-$("selectPhilippine").click(function() {
+$("#selectPhilippine").click(function() {
     playerAnswerQ1 = $(this).val();
     checkAnswer(playerAnswerQ1, q1Answers);
 });
 
-    function checkAnswer(playerAnswer, answerArray, correctIndex) {
-            if (playerAnswer === answerArray[correctIndex]) {
-                alert("Right!");
-            
-            } else {
-                alert("Wrong!");
-            }
-    }
+    
 
 // Functions for Question #2
-$("select70").click(function() {
+$("#select70").click(function() {
+    playerAnswerQ2 = $(this).val();
+    checkAnswer(playerAnswerQ2, q2Answers, 0);
     $('input: radio[name=coverage')[0].checked = true;
 });
 
-$("select85").click(function() {
-    $('input: radio[name=coverage')[1].checked = false;
+$("#select85").click(function() {
+    playerAnswerQ2 = $(this).val();
+    checkAnswer(playerAnswerQ2, q2Answers);  
 });
 
-$("select65").click(function() {
-    $('input: radio[name=coverage')[2].checked = false;
+$("#select65").click(function() {
+    playerAnswerQ2 = $(this).val();
+    checkAnswer(playerAnswerQ2, q2Answers);    
 });
 
 // Functions for Question #3
-$("selectMidAtlantic").click(function() {
-    $('input: radio[name=ridge')[0].checked = true;
+$("#selectMidAtlantic").click(function() {
+    playerAnswerQ3 = $(this).val();
+    checkAnswer(playerAnswerQ3, q3Answers, 0);
+    $('input: radio[name=coverage')[0].checked = true;
 });
 
-$("selectEastPacific").click(function() {
-    $('input: radio[name=ridge')[1].checked = false;
+$("#selectEastPacific").click(function() {
+    playerAnswerQ3 = $(this).val();
+    checkAnswer(playerAnswerQ3, q3Answers);
 });
 
-$("selectNazca").click(function() {
-    $('input: radio[name=ridge')[2].checked = false;
+$("#selectNazca").click(function() {
+    playerAnswerQ3 = $(this).val();
+    checkAnswer(playerAnswerQ3, q3Answers, 0);
 });
+
+
+
 
 
 

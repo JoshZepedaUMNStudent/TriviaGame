@@ -50,5 +50,7 @@ p {
 
 #timer {
     margin-left: 650;
+    margin-bottom: 70;
+    font-size: 70;
     color: yellow;
 }
