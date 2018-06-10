@@ -1,9 +1,6 @@
 // $(document).ready(function() {
 
-window.onload = function() {
-    $("#reset").on("click", timer.reset);
-    $("#starter").on("click", timer.start);
-};
+
     
 // Global Variables  
 var q1Answers = ["Tonga", "Marianna", "Philippine"];
@@ -13,11 +10,16 @@ var playerAnswer = "";
 var playerAnswerQ1 = "";
 var playerAnswerQ2 = "";
 
-
 var time = 0;
 
 
 // Timer
+window.onload = function() {
+    $("#reset").on("click", reset);
+    $("#starter").on("click", start);
+    $(":radio").attr('disabled', true);
+};
+
 function reset() {
     time = 0;
 
@@ -26,10 +28,14 @@ function reset() {
 
 function start() {
     intervalId = setInterval(count, 1000);
+    $(":radio").attr('disabled', false);
 }
 
 function count() {
     time++;
+    if (time === 60) {
+        alert("TIME OUT!");
+    }
     var converted = timeConverter(time);
     $("#timer").text(converted);
 }
@@ -44,11 +50,10 @@ function timeConverter(t) {
 
     if (minutes === 0) {
         minutes = "00";
- }
+    }
 
- return minutes + ":" + seconds;
+    return minutes + ":" + seconds;
  }
-start();
 
 // Function to check Player's Answers
 function checkAnswer(playerAnswer, answerArray, correctIndex) {
@@ -65,54 +70,58 @@ function checkAnswer(playerAnswer, answerArray, correctIndex) {
 $("#selectTonga").click(function() {
     playerAnswerQ1 = $(this).val();
     console.log(playerAnswer);
-    checkAnswer(playerAnswerQ1, q1Answers);
+    checkAnswer(playerAnswerQ1, q1Answers, 1);
+    $("#question-1 :radio").attr('disabled', true);
 });
 
 $("#selectMarianna").click(function() {
     playerAnswerQ1 = $(this).val();
     checkAnswer(playerAnswerQ1, q1Answers, 1); 
-    $('input: radio[name=trench')[1].checked = true; 
+    $("#question-1 :radio").attr('disabled', true);
 });
 
 $("#selectPhilippine").click(function() {
     playerAnswerQ1 = $(this).val();
-    checkAnswer(playerAnswerQ1, q1Answers);
+    checkAnswer(playerAnswerQ1, q1Answers, 1);
+    $("#question-1 :radio").attr('disabled', true);
 });
-
-    
 
 // Functions for Question #2
 $("#select70").click(function() {
     playerAnswerQ2 = $(this).val();
     checkAnswer(playerAnswerQ2, q2Answers, 0);
-    $('input: radio[name=coverage')[0].checked = true;
+    $("#question-2 :radio").attr('disabled', true);
 });
 
 $("#select85").click(function() {
     playerAnswerQ2 = $(this).val();
-    checkAnswer(playerAnswerQ2, q2Answers);  
+    checkAnswer(playerAnswerQ2, q2Answers, 0);
+    $("#question-2 :radio").attr('disabled', true);  
 });
 
 $("#select65").click(function() {
     playerAnswerQ2 = $(this).val();
-    checkAnswer(playerAnswerQ2, q2Answers);    
+    checkAnswer(playerAnswerQ2, q2Answers, 0);
+    $("#question-2 :radio").attr('disabled', true);    
 });
 
 // Functions for Question #3
 $("#selectMidAtlantic").click(function() {
     playerAnswerQ3 = $(this).val();
     checkAnswer(playerAnswerQ3, q3Answers, 0);
-    $('input: radio[name=coverage')[0].checked = true;
+    $("#question-3 :radio").attr('disabled', true);
 });
 
 $("#selectEastPacific").click(function() {
     playerAnswerQ3 = $(this).val();
-    checkAnswer(playerAnswerQ3, q3Answers);
+    checkAnswer(playerAnswerQ3, q3Answers, 0);
+    $("#question-3 :radio").attr('disabled', true);    
 });
 
 $("#selectNazca").click(function() {
     playerAnswerQ3 = $(this).val();
     checkAnswer(playerAnswerQ3, q3Answers, 0);
+    $("#question-3 :radio").attr('disabled', true);
 });
 
 
